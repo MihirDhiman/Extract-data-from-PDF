@@ -111,7 +111,7 @@ const shouldIgnoreMainAuditRow = (row, columnBoundariesFound) => {
 export const extractAndSaveAuditData = async () => {
   const pdfFiles = getAllPdfFiles();
   if (pdfFiles.length === 0) {
-    console.error("⚠️ No PDF files found in /public");
+    console.error("No PDF files found in /public");
     return;
   }
 
@@ -163,7 +163,7 @@ export const extractAndSaveAuditData = async () => {
       }
 
       if (!columnBoundaries) {
-        console.error(`⚠️ Header not found in ${fileName}. Skipping.`);
+        console.error(`Header not found in ${fileName}. Skipping.`);
         continue;
       }
 
@@ -199,7 +199,7 @@ export const extractAndSaveAuditData = async () => {
           client: null,
           category: null,
           action: null,
-          details: null, // Will be overwritten by merged details
+          details: null, // will overwritten
           archive: null,
         };
 
@@ -222,9 +222,9 @@ export const extractAndSaveAuditData = async () => {
       // Extract details from the SAME file
       const detailEntries = await extractDetailsOnly(filePath);
       
-      console.log(`\n📊 [${fileName}] Audit Entries: ${validRows.length} | Detail Entries: ${detailEntries.length}`);
+      console.log(` [${fileName}] Audit Entries: ${validRows.length} | Detail Entries: ${detailEntries.length}`);
       if (validRows.length !== detailEntries.length) {
-          console.warn(`⚠️ [${fileName}] Entry mismatch! Difference: ${validRows.length - detailEntries.length}. Merging may result in misaligned details.`);
+          console.warn(`[${fileName}] Entry mismatch! Difference: ${validRows.length - detailEntries.length}. Merging may result in misaligned details.`);
       }
 
 
